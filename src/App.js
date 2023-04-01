@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import './App.css';
+import Login from './Login/Login';
+import HomePage from "./HomePage/HomePage";
+import ErrorElement from "./ErrorElement/ErrorElement";
+import { AuthProvide } from "./ContextApi/authLogin";
 
+
+const router = createBrowserRouter([
+  {path:'/',
+  element:<Login></Login>,
+  errorElement:<ErrorElement></ErrorElement>},
+  {path:'/homepage',
+  element:<HomePage></HomePage>,
+  errorElement:<ErrorElement></ErrorElement>}
+  
+])
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvide>
+      <RouterProvider router={router}>
+     
+      </RouterProvider>
+    </AuthProvide>
   );
 }
 
-export default App;
+export default App
