@@ -1,20 +1,28 @@
 import React from "react";
-import { authLogin, useAuth } from "../ContextApi/authLogin";
-import { useNavigate } from "react-router";
-import { getAuth } from "firebase/auth";
+import { useAuth } from "../ContextApi/authLogin";
+import { Navigate } from "react-router";
+import { NavLink } from "react-router-dom";
+import PaymentGatway from "../PaymentGatway/PaymentGatway";
+
+
 function HomePage(){
-    const navigate = useNavigate();
+    
     const {name} = useAuth();
     const {  sign_Out } = useAuth();
     console.log(name)
-    if(!getAuth){
-        navigate("/")
-    }
+    
+
+  
+    
     return(
         <>
         {
             name?<><h1>Hi Welcome to HomePage Mr.{name}</h1>
-            <button onClick={sign_Out}>SignOut</button></>:navigate("/")
+            <NavLink to="/chatbox">Chatbox</NavLink><br /><br />
+            <PaymentGatway></PaymentGatway>
+            <button onClick={sign_Out}>SignOut</button>
+            
+            </>:<Navigate to="/" replace/>
         }
         
         </>

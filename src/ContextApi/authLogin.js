@@ -1,10 +1,11 @@
 import {React, createContext,useState, useContext, useEffect} from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut} from "firebase/auth";
-import { useNavigate } from "react-router";
 
+// import { useNavigate } from "react-router";
 
-const firebaseConfig = {
+import {  getFirestore } from "firebase/firestore";
+ export const firebaseConfig = {
     apiKey: "AIzaSyBsYZPJsWVDjsq0ZcyF6tRQsaTBBrGy0f8",
     authDomain: "chat-567c3.firebaseapp.com",
     databaseURL: "https://chat-567c3-default-rtdb.firebaseio.com",
@@ -17,6 +18,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+const db =  getFirestore(app);
+export default db
+
 
 
 const provider = new GoogleAuthProvider();
@@ -26,10 +30,11 @@ const provider = new GoogleAuthProvider();
 const AuthContext = createContext();
 
 export const AuthProvide = ({children})=>{
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [profilePic, setProfilePic] = useState("");
+    
     const [loading, setLoading] = useState(true);
     
     useEffect(()=>{
@@ -55,7 +60,7 @@ export const AuthProvide = ({children})=>{
             setName(result.user.displayName);
             setEmail(result.user.email);
             setProfilePic(result.user.photoURL);
-            navigate('/homepage');
+            // navigate('/homepage');
 
 
           })
