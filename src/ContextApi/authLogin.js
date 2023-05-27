@@ -6,14 +6,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut} from "firebase/a
 
 import {  getFirestore } from "firebase/firestore";
  export const firebaseConfig = {
-    apiKey: "AIzaSyBsYZPJsWVDjsq0ZcyF6tRQsaTBBrGy0f8",
-    authDomain: "chat-567c3.firebaseapp.com",
-    databaseURL: "https://chat-567c3-default-rtdb.firebaseio.com",
-    projectId: "chat-567c3",
-    storageBucket: "chat-567c3.appspot.com",
-    messagingSenderId: "327861921087",
-    appId: "1:327861921087:web:a94922ff248b8b96589f8a",
-    measurementId: "G-ZYS96YD3VY"
+   
 };
 
 const app = initializeApp(firebaseConfig);
